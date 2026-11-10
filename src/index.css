@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* =========================================
+   ALGOLIZER — OFFICIAL DESIGN SYSTEM
+   White | Blue | Green | Red
+========================================= */
+
+:root {
+  /* Brand Colors */
+  --white: #FFFFFF;
+  --blue: #2563EB;
+  --green: #16A34A;
+  --red: #DC2626;
+
+  /* Theme */
+  --bg: #FFFFFF;
+  --bg2: #FFFFFF;
+  --bg3: #FFFFFF;
+
+  --surface: #FFFFFF;
+  --surface2: #FFFFFF;
+
+  --border: rgba(37, 99, 235, 0.15);
+  --border2: rgba(37, 99, 235, 0.3);
+
+  --text: #1E3A8A;
+  --text2: #2563EB;
+  --text3: #2563EB;
+
+  /* Primary */
+  --accent: #2563EB;
+  --accent2: #2563EB;
+  --accent-glow: rgba(37, 99, 235, 0.1);
+
+  /* Status */
+  --green: #16A34A;
+  --red: #DC2626;
+
+  /* Compatibility with existing components */
+  --cyan: #2563EB;
+  --yellow: #16A34A;
+  --pink: #DC2626;
+  --orange: #16A34A;
+}
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--white);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+  -webkit-font-smoothing: antialiased;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) var(--white);
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--green);
+}
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  font-weight: 700;
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.04);
+}
+
+.glass2 {
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  border-radius: 10px;
+}
+
+/* =========================================
+   INPUTS & SELECT
+========================================= */
+
+input,
+select,
+textarea {
+  font-family: 'DM Sans', sans-serif;
+}
+
+select,
+input[type="text"],
+input[type="number"],
+textarea {
+  background: var(--white);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+select option {
+  background: var(--white);
+  color: var(--text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--blue);
+  opacity: 0.55;
+}
+
+input[type="range"] {
+  accent-color: var(--blue);
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary Button */
+
+.btn-primary {
+  background: var(--blue);
+  color: var(--white);
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Success Button */
+
+.btn-success {
+  background: var(--green);
+  color: var(--white);
+  border: 1px solid var(--green);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+
+/* Danger Button */
+
+.btn-danger {
+  background: var(--red);
+  color: var(--white);
+  border: 1px solid var(--red);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+
+/* =========================================
+   GRID BACKGROUND
+========================================= */
+
+.grid-bg {
+  background: #FFFFFF;
+}
+
+/* =========================================
+   BRAND ACCENTS
+========================================= */
+
+.neon {
+  color: var(--blue);
+  text-shadow: none;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 11px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: rgba(37, 99, 235, 0.07);
+  color: var(--blue);
+  border: 1px solid var(--border);
+}
+
+/* =========================================
+   LINKS
+========================================= */
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--green);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .glass {
+    border-radius: 11px;
+  }
+
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--white);
+}
+
