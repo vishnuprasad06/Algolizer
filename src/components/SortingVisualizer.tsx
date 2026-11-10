@@ -229,8 +229,7 @@ const updateArraySize = () => {
   return (
     <div 
     
-    className="flex flex-col gap-4 p-4 max-w-7xl mx-auto min-h-screen pb-12">
-      {/* Header Controls */}
+   className="flex flex-col gap-4 p-4 w-full max-w-7xl min-w-0 mx-auto min-h-screen pb-12">
       <div className="glass p-4 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3 flex-wrap">
           <select value={algorithm} onChange={e => setAlgorithm(e.target.value as SortingAlgorithm)}>
@@ -314,30 +313,62 @@ const updateArraySize = () => {
       {/* Algorithm info panel */}
       {showInfo && (
         <div className="glass p-5 flex flex-col gap-3" style={{ borderLeft: `4px solid ${accentColor}` }}>
-          <h3 className="font-bold text-base" style={{ color: accentColor }}>{algoInfo.name}</h3>
-          <p className="text-sm leading-relaxed" style={{ color: 'var(--text2)' }}>{algoInfo.desc}</p>
-          <div className="grid sm:grid-cols-2 gap-3 text-sm">
-            <div style={{ background: 'rgba(22,163,74,0.06)',
-                          border: '1px solid rgba(22,163,74,0.2)' }} className="rounded-lg p-3">
-              <span style={{ color: 'var(--green)' }} className="font-bold text-xs uppercase tracking-wider">When to Use</span>
-              <p style={{ color: 'var(--text2)' }} className="mt-1 text-xs leading-relaxed">{algoInfo.when}</p>
-            </div>
-            <div style={{ background: 'rgba(255,95,126,0.08)', border: '1px solid rgba(255,95,126,0.2)' }} className="rounded-lg p-3">
-              <span style={{ color: 'var(--red)' }} className="font-bold text-xs uppercase tracking-wider">When to Avoid</span>
-              <p style={{ color: 'var(--text2)' }} className="mt-1 text-xs leading-relaxed">{algoInfo.avoid}</p>
-            </div>
-          </div>
-        </div>
-      )}
+  <h3 className="font-bold text-base" style={{ color: accentColor }}>
+    {algoInfo.name}
+  </h3>
+
+  <p className="text-sm leading-relaxed" style={{ color: 'var(--text2)' }}>
+    {algoInfo.desc}
+  </p>
+
+  <div className="grid sm:grid-cols-2 gap-3 text-sm">
+
+    {/* When to Use */}
+    <div
+      style={{
+        background: 'rgba(22,163,74,0.06)',
+        border: '1px solid rgba(22,163,74,0.2)'
+      }}
+      className="rounded-lg p-3 min-w-0 overflow-hidden"
+    >
+      <span style={{ color: 'var(--green)' }} className="font-bold text-xs uppercase tracking-wider">
+        When to Use
+      </span>
+
+      <p style={{ color: 'var(--text2)' }} className="mt-1 text-xs leading-relaxed">
+        {algoInfo.when}
+      </p>
+    </div>
+
+    {/* When to Avoid */}
+    <div
+      style={{
+        background: 'rgba(255,95,126,0.08)',
+        border: '1px solid rgba(255,95,126,0.2)'
+      }}
+      className="rounded-lg p-3 min-w-0 overflow-hidden"
+    >
+      <span style={{ color: 'var(--red)' }} className="font-bold text-xs uppercase tracking-wider">
+        When to Avoid
+      </span>
+
+      <p style={{ color: 'var(--text2)' }} className="mt-1 text-xs leading-relaxed">
+        {algoInfo.avoid}
+      </p>
+    </div>
+
+  </div>
+</div>
+)}
 
       {/* Progress bar */}
       <div style={{ background: 'var(--surface)', border: '1px solid var(--border)' }} className="rounded-full h-1.5 overflow-hidden">
         <div style={{ width: `${progress}%`, background: accentColor, transition: 'width 0.2s' }} className="h-full rounded-full" />
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-full min-w-0">
         {/* Left: Visualizer + controls */}
-        <div className="lg:col-span-2 flex flex-col gap-4">
+        <div className="lg:col-span-2 flex flex-col gap-4 min-w-0 w-full">
           <div className="glass p-4 flex flex-col gap-4">
             {/* Scrollable visualization area */}
             <div ref={vizScrollRef} className="overflow-x-auto"
@@ -476,154 +507,63 @@ const updateArraySize = () => {
         </div>
 
         {/* Right panel */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 min-w-0 w-full">
           {/* Pseudocode */}
-          <div className="glass flex flex-col overflow-hidden">
-            <div style={{ borderBottom: '1px solid var(--border)' }} className="px-4 py-3 flex items-center justify-between">
-              <h3 className="text-sm font-bold font-mono uppercase tracking-wider" style={{ color: 'var(--text3)' }}>// Pseudocode</h3>
-              <span className="tag" style={{ background: `${accentColor}20`, color: accentColor, border: `1px solid ${accentColor}40` }}>{algoInfo.name}</span>
-            </div>
-            <div className="p-4 font-mono text-xs flex flex-col gap-0.5 overflow-y-auto" style={{ maxHeight: 240 }}>
-              {PSEUDOCODE[algorithm].map((line, idx) => (
-                <div key={idx}
-                  style={currentStep?.lineHighlight === idx
-                    ? { background: `${accentColor}20`, borderLeft: `3px solid ${accentColor}`, color: 'var(--text)' }
-                    : { borderLeft: '3px solid transparent', color: 'var(--text2)' }}
-                  className="px-2 py-0.5 rounded-r transition-all">
-                  <pre className="whitespace-pre-wrap">{line}</pre>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Input-Based Complexity Analysis */}
+<div className="glass flex flex-col overflow-hidden min-w-0 w-full">
 
-<div className="glass p-5 flex flex-col gap-4">
+  {/* Pseudocode Header */}
 
-  <div>
-    <h3 className="text-sm font-bold uppercase tracking-wider">
-      Input-Based Analysis
+  <div
+    style={{ borderBottom: '1px solid var(--border)' }}
+    className="px-4 py-3 flex items-center justify-between gap-2 flex-wrap min-w-0"
+  >
+    <h3
+      className="text-xs font-mono font-bold uppercase tracking-wider"
+      style={{ color: 'var(--text3)' }}
+    >
+      // Pseudocode
     </h3>
 
-    <p className="text-xs mt-1" style={{ color: 'var(--text3)' }}>
-      Actual execution statistics
-    </p>
+    <span
+      className="text-xs font-semibold uppercase"
+      style={{ color: accentColor }}
+    >
+      {algoInfo.name}
+    </span>
   </div>
 
-  <div className="grid grid-cols-2 gap-3">
+  {/* Pseudocode Content */}
 
-    {[
-      { label: 'Input Size', value: analysis.inputSize },
-      { label: 'Comparisons', value: analysis.comparisons },
-      { label: 'Swaps', value: analysis.swaps },
-      { label: 'Array Writes', value: analysis.writes },
-      {
-        label: 'Execution Time',
-        value: `${analysis.executionTime.toFixed(4)} ms`
-      }
-    ].map(item => (
-
+  <div
+    className="p-4 font-mono text-xs flex flex-col gap-0.5 overflow-y-auto"
+    style={{ maxHeight: 240 }}
+  >
+    {PSEUDOCODE[algorithm].map((line, idx) => (
       <div
-        key={item.label}
-        className="rounded-lg p-3"
-        style={{
-          background: 'var(--bg3)',
-          border: '1px solid var(--border)'
-        }}
+        key={idx}
+        style={
+          currentStep?.lineHighlight === idx
+            ? {
+                background: `${accentColor}20`,
+                borderLeft: `3px solid ${accentColor}`,
+                color: 'var(--text)',
+              }
+            : {
+                borderLeft: '3px solid transparent',
+                color: 'var(--text2)',
+              }
+        }
+        className="px-2 py-0.5 rounded-r transition-all"
       >
-
-        <p className="text-xs" style={{ color: 'var(--text3)' }}>
-          {item.label}
-        </p>
-
-        <p className="text-lg font-bold font-mono mt-1">
-          {item.value}
-        </p>
-
+        <pre className="whitespace-pre-wrap break-words">
+          {line}
+        </pre>
       </div>
-
     ))}
-
   </div>
-
-  <div
-    className="rounded-lg p-3"
-    style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-  >
-    <p className="text-xs mb-1" style={{ color: 'var(--text3)' }}>Input Behaviour</p>
-    <p className="font-semibold text-sm">{analysis.inputBehaviour}</p>
-  </div>
-
-  <div
-    className="rounded-lg p-4"
-    style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-  >
-    <p className="text-xs mb-2" style={{ color: 'var(--text3)' }}>Detected Case</p>
-    <p className="text-lg font-bold">{analysis.caseType}</p>
-  </div>
-
-  <div className="border-t pt-4"
-    style={{ borderColor: 'var(--border)' }}>
-
-    <h4 className="text-sm font-bold mb-3">
-      Theoretical Complexity
-    </h4>
-
-    <div className="grid grid-cols-2 gap-3">
-
-      {[
-        { label: 'Best Case', value: complexity.best },
-        { label: 'Average Case', value: complexity.avg },
-        { label: 'Worst Case', value: complexity.worst },
-        { label: 'Space', value: complexity.space }
-      ].map(item => (
-
-        <div key={item.label}>
-
-          <p className="text-xs"
-            style={{ color: 'var(--text3)' }}>
-            {item.label}
-          </p>
-
-          <p className="font-mono font-bold mt-1">
-            {item.value}
-          </p>
-
-        </div>
-
-      ))}
-
-    </div>
-
-  </div>
-
-  <p className="text-xs leading-relaxed"
-    style={{ color: 'var(--text3)' }}>
-
-    Actual statistics are calculated by executing the selected
-    algorithm on your input. Execution time depends on your device
-    and browser. Theoretical complexity describes how the algorithm
-    scales with input size.
-
-  </p>
 
 </div>
-
-          {/* Color Legend */}
-          <div className="glass p-4 flex flex-col gap-3">
-            <h3 className="text-xs font-mono uppercase tracking-wider" style={{ color: 'var(--text3)' }}>// Color Legend</h3>
-            {[
-              { color: 'var(--red)', label: 'Comparing / Active Elements' },
-              { color: 'var(--green)', label: 'Sorted / In Final Position' },
-              { color: 'var(--accent2)', label: 'Pivot / Special Marker' },
-              { color: 'var(--text2)', label: 'Default / Unsorted' },
-            ].map(l => (
-              <div key={l.label} className="flex items-center gap-2 text-xs">
-                <div style={{ background: l.color, width: 10, height: 10, borderRadius: 2, flexShrink: 0 }} />
-                <span style={{ color: 'var(--text2)' }}>{l.label}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>

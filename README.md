@@ -88,7 +88,7 @@ Follow these steps to run Algolizer locally.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Algolizer.git
+git clone https://github.com/vishnuprasad06/Algolizer.git
 ```
 
 ### 2. Navigate to the project directory
@@ -152,15 +152,18 @@ Algolizer/
 
 ## Screenshots
 
-Add screenshots of the application here.
+### Home Page
+![Algolizer Home Page](./screenshots/home.png)
 
-| Home Page | Sorting Visualizer |
-|---|---|
-| Coming soon | Coming soon |
+### Sorting Visualizer
+![Sorting Visualizer](./screenshots/sorting.png)
 
-| Graph Visualizer | Data Structures |
-|---|---|
-| Coming soon | Coming soon |
+### Graph Visualizer
+![Graph Visualizer](./screenshots/graph.png)
+
+### Data Structures Visualizer
+![Data Structures Visualizer](./screenshots/data-structures.png)
+
 
 ## Contributing
 

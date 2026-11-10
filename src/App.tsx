@@ -7,6 +7,8 @@ import {
   Zap,
   Layers,
   Cpu,
+  Menu,
+  X,
 } from 'lucide-react';
 
 import { motion, AnimatePresence } from 'motion/react';
@@ -21,11 +23,13 @@ type Page = 'home' | 'sorting' | 'graph' | 'ds' | 'digital';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   React.useEffect(() => {
     const handleNav = (e: Event) => {
       const customEvent = e as CustomEvent<Page>;
       setCurrentPage(customEvent.detail);
+      setMobileMenuOpen(false);
       window.scrollTo(0, 0);
     };
 
@@ -36,6 +40,7 @@ export default function App() {
 
   const navigate = (page: Page) => {
     setCurrentPage(page);
+    setMobileMenuOpen(false);
     window.scrollTo(0, 0);
   };
 
@@ -73,6 +78,8 @@ export default function App() {
 
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-blue-100">
 
+        {/* HEADER */}
+
         <div className="max-w-7xl mx-auto px-5 md:px-8 h-[76px] flex items-center justify-between">
 
           {/* BRAND */}
@@ -84,7 +91,7 @@ export default function App() {
             <img
               src="/algolizer-mark.png"
               alt="Algolizer"
-             className="w-12 h-12 rounded-full object-contain"
+              className="w-12 h-12 rounded-full object-contain"
             />
 
             <span className="text-2xl font-extrabold tracking-tight text-blue-700">
@@ -123,46 +130,96 @@ export default function App() {
 
           </div>
 
-          {/* MOBILE BRAND STATUS */}
+          {/* MOBILE HAMBURGER BUTTON */}
 
-          <div className="md:hidden flex items-center">
-            <span className="w-2 h-2 rounded-full bg-green-500 mr-2" />
-            <span className="text-xs font-semibold text-gray-500">
-              Online
-            </span>
-          </div>
-
-        </div>
-
-        {/* MOBILE NAVIGATION */}
-
-        <div className="md:hidden flex overflow-x-auto px-3 pb-3 gap-2">
-
-          {navItems.map((item) => {
-            const active = currentPage === item.id;
-
-            return (
-              <button
-                key={item.id}
-                onClick={() => navigate(item.id as Page)}
-                className={`
-                  flex items-center gap-2 whitespace-nowrap
-                  px-4 py-2 rounded-lg text-xs font-semibold
-                  border transition-all
-                  ${
-                    active
-                      ? 'bg-blue-600 text-white border-blue-600'
-                      : 'bg-white text-gray-600 border-gray-200'
-                  }
-                `}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="
+              md:hidden
+              w-11 h-11
+              flex items-center justify-center
+              rounded-xl
+              border border-blue-100
+              text-blue-700
+              bg-white
+              hover:bg-blue-50
+              active:scale-95
+              transition-all duration-200
+            "
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={mobileMenuOpen ? 'close' : 'menu'}
+                initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                transition={{ duration: 0.15 }}
               >
-                {item.icon}
-                {item.label}
-              </button>
-            );
-          })}
+                {mobileMenuOpen ? (
+                  <X size={24} />
+                ) : (
+                  <Menu size={24} />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </button>
 
         </div>
+
+        {/* MOBILE DROPDOWN NAVIGATION */}
+
+        <AnimatePresence initial={false}>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              className="md:hidden overflow-hidden border-t border-blue-100 bg-white"
+            >
+
+              <div className="max-w-7xl mx-auto p-4 flex flex-col gap-2">
+
+                {navItems.map((item, index) => {
+                  const active = currentPage === item.id;
+
+                  return (
+                    <motion.button
+                      key={item.id}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.04 }}
+                      onClick={() => navigate(item.id as Page)}
+                      className={`
+                        w-full
+                        flex items-center gap-3
+                        px-4 py-3.5
+                        rounded-xl
+                        text-sm font-semibold
+                        border
+                        transition-all duration-200
+                        ${
+                          active
+                            ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                            : 'bg-white text-gray-600 border-gray-100 hover:bg-blue-50 hover:text-blue-700'
+                        }
+                      `}
+                    >
+                      {item.icon}
+
+                      <span>{item.label}</span>
+
+                    </motion.button>
+                  );
+                })}
+
+              </div>
+
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </nav>
 
@@ -239,7 +296,6 @@ const Home: React.FC<{
       icon: <BarChart3 size={25} />,
       description:
         'Understand how sorting algorithms organize data through interactive step-by-step animations.',
-
       accent: '#2563EB',
       tags: ['Bubble Sort', 'Quick Sort', 'Merge Sort'],
     },
@@ -251,7 +307,6 @@ const Home: React.FC<{
       icon: <Network size={25} />,
       description:
         'Explore graph traversal and shortest-path algorithms using interactive nodes and connections.',
-
       accent: '#16A34A',
       tags: ['BFS', 'DFS', 'Dijkstra'],
     },
@@ -263,7 +318,6 @@ const Home: React.FC<{
       icon: <Layers size={25} />,
       description:
         'Visualize how fundamental data structures store, organize and manipulate information.',
-
       accent: '#DC2626',
       tags: ['Stack', 'Queue', 'Linked List'],
     },
@@ -275,7 +329,6 @@ const Home: React.FC<{
       icon: <Cpu size={25} />,
       description:
         'Explore digital logic, Boolean expressions and fundamental digital electronics concepts.',
-
       accent: '#2563EB',
       tags: ['Logic Gates', 'K-Maps', 'Flip-Flops'],
     },
