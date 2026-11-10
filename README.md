@@ -1,20 +1,187 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+
+# Algolizer
+
+### Visualize Algorithms Like Never Before.
+
+An interactive learning platform that brings algorithms, data structures, and digital electronics to life through visualizations and animations.
+
+[Live Demo](#) · [Report Bug](../../issues) · [Request Feature](../../issues)
+
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## About
 
-View your app in AI Studio: https://ai.studio/apps/f8d125e9-f4fa-4bed-aefd-6c6291d39e36
+**Algolizer** is an interactive educational platform designed to make complex computer science concepts easier to understand.
 
-## Run Locally
+Instead of just reading theory or looking at code, explore how algorithms execute, how data structures behave, and how digital logic works through interactive visualizations.
 
-**Prerequisites:**  Node.js
+Whether you're learning sorting algorithms, exploring graph traversal, understanding data structures, or experimenting with digital electronics, Algolizer makes learning more visual and engaging.
 
+## Features
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Sorting Visualizer
+Explore and understand popular sorting algorithms through animated visualizations.
+
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
+- Quick Sort
+- Heap Sort
+- Interactive controls and visualization modes
+- Pseudocode and algorithm statistics
+
+### Graph Visualizer
+Experiment with graph traversal and shortest-path algorithms.
+
+- Breadth-First Search (BFS)
+- Depth-First Search (DFS)
+- Dijkstra's Shortest Path Algorithm
+- Create custom graphs
+- Add weighted edges
+- Drag and reposition nodes
+- Visualize traversal paths
+
+### Data Structures Visualizer
+Understand how fundamental data structures operate.
+
+- Stack
+- Queue
+- Singly Linked List
+- Doubly Linked List
+- Circular Linked List
+- Binary Search Tree (BST)
+- Interactive insertion, deletion, and search operations
+
+### Digital Electronics
+Explore important concepts in digital electronics through interactive tools.
+
+- Logic Gates
+- Karnaugh Maps (K-Maps)
+- Flip-Flops
+- Boolean Algebra
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| React | User interface |
+| TypeScript | Type-safe development |
+| Vite | Development and build tooling |
+| Tailwind CSS | Styling |
+| Motion | Animations |
+| Lucide React | Icons |
+
+## Getting Started
+
+Follow these steps to run Algolizer locally.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- npm
+- Git
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Algolizer.git
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd Algolizer
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the development server
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed in your terminal to explore Algolizer.
+
+### 5. Build for production
+
+```bash
+npm run build
+```
+
+The production-ready files will be generated in the `dist` directory.
+
+## Project Structure
+
+```text
+Algolizer/
+│
+├── public/
+│   └── assets/
+│
+├── src/
+│   ├── algorithms/
+│   │   └── sorting.ts
+│   │
+│   ├── components/
+│   │   ├── SortingVisualizer.tsx
+│   │   ├── GraphVisualizer.tsx
+│   │   ├── DSVisualizer.tsx
+│   │   ├── DigitalVisualizer.tsx
+│   │   └── Tile.tsx
+│   │
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   └── types.ts
+│
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── README.md
+```
+
+## Screenshots
+
+Add screenshots of the application here.
+
+| Home Page | Sorting Visualizer |
+|---|---|
+| Coming soon | Coming soon |
+
+| Graph Visualizer | Data Structures |
+|---|---|
+| Coming soon | Coming soon |
+
+## Contributing
+
+Contributions, suggestions, and improvements are welcome!
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Make your changes.
+4. Commit your changes.
+5. Open a Pull Request.
+
+## License
+
+This project is open source. You can add a license file to specify the terms under which others may use and contribute to it.
+
+---
+
+<div align="center">
+
+**Built with curiosity and a passion for computer science.**
+
+### Algolizer — Visualize Algorithms Like Never Before.
+
+</div>
