@@ -2,7 +2,7 @@
   <h1>Algolizer</h1>
 
   <p align="center">
-  <a href="https://algolizer-web.vercel.app/">
+  <a href="https://algolizer-web.vercel.app/" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/Live_Demo-Visit_Algolizer-2563EB?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
   </a>
 </p>
