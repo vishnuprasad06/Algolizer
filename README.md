@@ -1,5 +1,12 @@
 <div align="center">
   <h1>Algolizer</h1>
+
+  <p align="center">
+  <a href="https://algolizer-web.vercel.app/">
+    <img src="https://img.shields.io/badge/Live_Demo-Visit_Algolizer-2563EB?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo">
+  </a>
+</p>
+
   <p><strong>Visualize algorithms like never before.</strong></p>
   <p>An interactive learning platform for exploring algorithms, data structures, graphs, and digital electronics.</p>
 </div>
